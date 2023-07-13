@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     # third Party
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
+    'crispy_forms',
+    'crispy_bootstrap5',
 
 
     # Locals
@@ -66,7 +69,9 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            str(BASE_DIR.joinpath('templates')),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -134,3 +139,31 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# Static 
+STATIC_URL = "static/"
+STATICFILES_DIRS =[ os.path.join(BASE_DIR, 'static')]
+
+#Media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# Bootstrap 
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'home'
+
+ACCOUNT_EMAIL_REQUIRED ='True'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+AUTHENTICATION_BACKENDS = (
+  # Needed to login by username in Django admin, regardless of `allauth`
+  "django.contrib.auth.backends.ModelBackend",
+  # `allauth` specific authentication methods, such as login by e-mail
+  "allauth.account.auth_backends.AuthenticationBackend"
+)
