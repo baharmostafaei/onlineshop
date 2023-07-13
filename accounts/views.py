@@ -9,5 +9,3 @@ class SignUpView(generic.CreateView):
     template_name = 'account/signup.html'
     success_url = reverse_lazy('account_login')
 
-def home(request):
-    return HttpResponse('200')
