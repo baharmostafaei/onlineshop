@@ -311,7 +311,7 @@ a:focus {
 .slider_section .carousel_btn-box .carousel-control-prev,
 .slider_section .carousel_btn-box .carousel-control-next {
   position: unset;
-  height: 25px;
+  height: 1px;
   width: 25px;
   background-repeat: no-repeat;
   opacity: 1;

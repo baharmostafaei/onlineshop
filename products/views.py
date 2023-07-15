@@ -1,6 +1,14 @@
 from django.shortcuts import render
 from django.views  import generic
 
-def product_list_view(request):
-    return render(request, 'products/product_list.html')
+from .models import Product
 
+def home_view(request):
+    return render(request, 'products/home.html')
+
+class ProductListView(generic.ListView):
+
+    template_name = 'product/product_list.html'
+    queryset = Product.objects.filter(active=True)
+    context_object_name = 'products'
+    paginate_by = 15
