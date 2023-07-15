@@ -10,17 +10,18 @@
             All Products
           </h2>
         </div>
-        {% for product in products %}{% endfor %}
         <div class="row">
+          {% for product in products %}
           <div class="col-sm-6 col-md-4 col-lg-3">
             <div class="box">
-              <a href="">
                 <div class="img-box">
-                  <img s{{product.image}}alt="">
+                  <a href="{{product.get_absolute_url}}">
+                    <img src="{{product.image.url}}" alt="...">
+                  </a>
                 </div>
                 <div class="detail-box">
                   <h6>
-                    {{ product.title}}
+                    {{product.title}}
                   </h6>
                   <h6>
                     Price
@@ -34,9 +35,9 @@
                     New
                   </span>
                 </div>
-              </a>
+              </div>
             </div>
-          </div>
+            {% endfor %}
           
         </div>
         

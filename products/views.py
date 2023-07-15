@@ -8,7 +8,12 @@ def home_view(request):
 
 class ProductListView(generic.ListView):
 
-    template_name = 'product/product_list.html'
+    template_name = 'products/product_list.html'
     queryset = Product.objects.filter(active=True)
     context_object_name = 'products'
     paginate_by = 15
+
+class ProductDetailView(generic.DetailView):
+    template_name = 'products/product_detail.html'
+    model = Product
+    context_object_name = 'product'
